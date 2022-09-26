@@ -6,6 +6,7 @@ export default class Demo extends Phaser.Scene {
   }
 
   preload() {
+    this.load.setBaseURL("../../../../public")
     this.load.image('logo', 'assets/phaser3-logo.png');
   }
 

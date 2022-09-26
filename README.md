@@ -1,27 +1,30 @@
-<h1 align="center">
-  <br>
-  <a href="https://github.com/geocine/phaser3-rollup-typescript#readme"><img src="https://i.imgur.com/6lcIxDs.png" alt="header" width="600"/></a>
-  <br>
-  Phaser 3 TypeScript Starter
-  <br>
-</h1>
+# Issue with Vitest and Phaser3
 
-This is a [Phaser 3](https://github.com/photonstorm/phaser) starter with [TypeScript](https://www.typescriptlang.org/), [Rollup](https://rollupjs.org) with ⚡️ lightning fast HMR through [Vite](https://vitejs.dev/).
+I've been able to reproduce this issue on Win10 and Ubuntu, although they appear in a bit different variance (error codes, vs straight kill of execution)
 
-## Available Commands
+* npm install
+* npm test
+* open `demo.spec.ts` and hit control+s (trigger re-test)
+* watch the command line output
 
-| Command | Description |
-|---------|-------------|
-| `yarn install` | Install project dependencies |
-| `yarn dev` | Builds project and open web server, watching for changes |
-| `yarn build` | Builds code bundle with production settings  |
-| `yarn serve` | Run a web server to serve built code bundle |
+```bash
+(process:16044): GLib-GObject-WARNING **: 19:29:39.729: cannot register existing type 'PangoFontMap'
 
-## Development
+(process:16044): GLib-GObject-WARNING **: 19:29:39.729: cannot add private field to invalid (non-instantiatable) type '<invalid>'
 
-After cloning the repo, run `yarn install` from your project directory. Then, you can start the local development
-server by running `yarn dev` and navigate to http://localhost:3000.
+(process:16044): GLib-GObject-CRITICAL **: 19:29:39.729: g_type_add_interface_static: assertion 'G_TYPE_IS_INSTANTIATABLE (instance_type)' failed
 
-## Production
+(process:16044): GLib-CRITICAL **: 19:29:39.729: g_once_init_leave: assertion 'result != 0' failed
 
-After running `yarn build`, the files you need for production will be on the `dist` folder. To test code on your `dist` folder, run `yarn serve` and navigate to http://localhost:5000
+(process:16044): GLib-GObject-CRITICAL **: 19:29:39.729: g_type_register_static: assertion 'parent_type > 0' failed
+
+(process:16044): GLib-GObject-WARNING **: 19:29:39.729: cannot add private field to invalid (non-instantiatable) type '<invalid>'
+
+(process:16044): GLib-GObject-CRITICAL **: 19:29:39.729: g_type_add_interface_static: assertion 'G_TYPE_IS_INSTANTIATABLE (instance_type)' failed
+
+(process:16044): GLib-CRITICAL **: 19:29:39.729: g_once_init_leave: assertion 'result != 0' failed
+
+(process:16044): GLib-GObject-CRITICAL **: 19:29:39.729: g_type_register_static: assertion 'parent_type > 0' failed
+
+(process:16044): GLib-GObject-WARNING **: 19:29:39.729: cannot register existing type 'PangoCairoFontMap'
+```
